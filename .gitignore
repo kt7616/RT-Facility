@@ -1,0 +1,24 @@
+# Raw data (large, downloadable)
+raw_data/
+
+# R artifacts
+*.rds
+*.RData
+.Rhistory
+.Rproj.user/
+Rplots.pdf
+
+# Python artifacts
+__pycache__/
+*.pyc
+.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+
+# Claude Code
+.claude/

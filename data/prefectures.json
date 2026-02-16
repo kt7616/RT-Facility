@@ -1,0 +1,50 @@
+[
+  {
+    "code": "01",
+    "name": "北海道",
+    "name_en": "hokkaido",
+    "dir_name": "01_hokkaido"
+  },
+  {
+    "code": "02",
+    "name": "青森県",
+    "name_en": "aomori",
+    "dir_name": "02_aomori"
+  },
+  {
+    "code": "03",
+    "name": "岩手県",
+    "name_en": "iwate",
+    "dir_name": "03_iwate"
+  },
+  {
+    "code": "04",
+    "name": "宮城県",
+    "name_en": "miyagi",
+    "dir_name": "04_miyagi"
+  },
+  {
+    "code": "05",
+    "name": "秋田県",
+    "name_en": "akita",
+    "dir_name": "05_akita"
+  },
+  {
+    "code": "06",
+    "name": "山形県",
+    "name_en": "yamagata",
+    "dir_name": "06_yamagata"
+  },
+  {
+    "code": "07",
+    "name": "福島県",
+    "name_en": "fukushima",
+    "dir_name": "07_fukushima"
+  },
+  {
+    "code": "15",
+    "name": "新潟県",
+    "name_en": "niigata",
+    "dir_name": "15_niigata"
+  }
+]
