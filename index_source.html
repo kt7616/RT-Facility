@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北日本 放射線治療施設アクセスマップ</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="style.css?v=2" />
+</head>
+<body>
+
+<!-- Disclaimer modal -->
+<div class="modal-overlay" id="disclaimerModal">
+  <div class="modal-box">
+    <h2>ご利用にあたって</h2>
+
+    <div class="modal-section">
+      <h3>本アプリケーションについて</h3>
+      <p>本アプリケーションは個人が研究目的で作成したものであり、公的機関・医療機関が提供する公式の情報ではありません。掲載内容について、いかなる政府機関・医療機関等の承認・推奨を受けたものではなく、また内容の正確性を保証するものでもありません。</p>
+    </div>
+
+    <div class="modal-section">
+      <h3>データの性質と限界</h3>
+      <ul>
+        <li>表示される所要時間は、OpenStreetMap の道路ネットワークと OSRM による経路計算に基づく推計値です。道路の実際の通行状況（交通量、工事、通行規制、気象条件等）は考慮されておらず、実際の移動時間とは異なる場合があります。</li>
+        <li>走行速度の設定は松田ら (2018)「医療計画作成支援データブック」に準拠していますが、実態との乖離が生じうる点にご留意ください。</li>
+        <li>データ取得・加工の各過程において誤りが含まれる可能性があります。重要な判断にご利用の際は、必ず原典データの確認をお願いいたします。</li>
+        <li>施設の名称・位置情報はジオコーディング結果に基づくものであり、実際の所在地と若干異なる場合があります。</li>
+      </ul>
+    </div>
+
+    <div class="modal-section">
+      <h3>使用データ・出典</h3>
+      <ul>
+        <li><b>人口データ:</b> 「令和2年国勢調査」（総務省統計局）を加工して作成<br>
+            出典: 政府統計の総合窓口 (e-Stat)
+            (<a href="https://www.e-stat.go.jp/" target="_blank">https://www.e-stat.go.jp/</a>)</li>
+        <li><b>道路ネットワーク:</b>
+            <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>
+            (Open Database License)</li>
+        <li><b>経路計算エンジン:</b>
+            <a href="http://project-osrm.org/" target="_blank">OSRM</a>
+            (Open Source Routing Machine, BSD 2-Clause License)</li>
+        <li><b>ジオコーディング:</b> Nominatim / OpenStreetMap</li>
+        <li><b>行政境界:</b>
+            <a href="https://gadm.org/" target="_blank">GADM</a> v4.1
+            (非商用・学術目的で使用)</li>
+        <li><b>地図タイル:</b>
+            <a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">国土地理院</a></li>
+      </ul>
+    </div>
+
+    <div class="modal-section">
+      <h3>免責事項</h3>
+      <p>本アプリケーションの利用は利用者自身の責任において行ってください。本アプリケーションの利用により生じたいかなる損害についても、作成者は一切の責任を負いません。</p>
+    </div>
+
+    <div class="modal-agree" id="agreeSection">
+      <label>
+        <input type="checkbox" id="agreeCheck">
+        上記の内容を理解し、同意のうえ利用します
+      </label>
+      <button id="agreeBtn">利用開始</button>
+    </div>
+    <div class="modal-agree hidden" id="closeSection">
+      <button class="enabled" id="closeBtn">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<div class="header">
+  <h1>北日本 1kmメッシュ別 放射線治療施設へのアクセス時間</h1>
+  <p>OSRMによる自動車走行時間（最寄り施設） | 北海道・東北6県・新潟県 | 令和2年国勢調査</p>
+</div>
+
+<div class="container">
+  <div class="sidebar" id="sidebar">
+    <!-- JS で動的に生成 -->
+  </div>
+  <div class="main">
+    <div id="map" style="position:relative;">
+      <div class="loading-overlay" id="loadingOverlay">データ読み込み中...</div>
+    </div>
+    <div class="summary-section">
+      <h3>所要時間帯別の人口集計</h3>
+      <div class="summary-filter">
+        対象: <select id="summaryPrefSelect"></select>
+      </div>
+      <table class="summary-table" id="summaryTable">
+        <thead>
+          <tr>
+            <th>時間帯</th><th>メッシュ数</th><th>人口</th>
+            <th>構成比(%)</th><th>累積(%)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
